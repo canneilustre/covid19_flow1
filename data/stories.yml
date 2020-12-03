@@ -1,0 +1,82 @@
+version: "2.0"
+
+stories:
+
+- story: report_symptoms
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_mainmenu
+  - intent: report_suspected_case
+  - action: utter_thanks_for_reporting
+  - action: utter_privacy_notice
+  - intent: affirm
+  - action: utter_reason_for_report
+  - intent: reason_has_symptoms
+  - action: PUI_form
+  - active_loop: null
+  - action: utter_submit
+
+- story: OOS_report_symptoms
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_mainmenu
+  - intent: report_suspected_case
+  - action: utter_thanks_for_reporting
+  - action: utter_privacy_notice
+  - intent: affirm
+  - action: utter_reason_for_report
+  - intent: reason_has_symptoms
+  - action: PUI_form
+  - intent: out_of_scope
+  - action: utter_ask_continue
+  - intent: deny
+  - action: action_deactivate_loop
+  - active_loop: null
+
+- story: OOO_but_continue_report_symptoms
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_mainmenu
+  - intent: report_suspected_case
+  - action: utter_thanks_for_reporting
+  - action: utter_privacy_notice
+  - intent: affirm
+  - action: utter_reason_for_report
+  - intent: reason_has_symptoms
+  - action: PUI_form
+  - intent: out_of_scope
+  - action: utter_ask_continue
+  - intent: affirm
+  - action: PUI_form
+  - active_loop: null
+  - action: utter_submit
+
+- story: deny_privacy_goto_menu
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_mainmenu
+  - intent: report_suspected_case
+  - action: utter_thanks_for_reporting
+  - action: utter_privacy_notice
+  - intent: deny
+  - action: utter_understand_end
+  - intent: mainmenu
+
+- story: deny_privacy_but_wants_to_restart
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_mainmenu
+  - intent: report_suspected_case
+  - action: utter_thanks_for_reporting
+  - action: utter_privacy_notice
+  - intent: deny
+  - action: utter_understand_end
+  - intent: restart_report
+  - action: utter_restart
+  - action: utter_privacy_notice
+  - intent: affirm

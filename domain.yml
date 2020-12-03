@@ -1,0 +1,161 @@
+version: "2.0"
+
+intents:
+  - greet
+  - mainmenu
+  - report_suspected_case
+  - reason_has_symptoms
+  - affirm
+  - deny
+  - unsure
+  - restart_report
+  - goodbye
+  - bot_challenge
+  - inform
+  - out_of_scope
+
+entities:
+  - PERSON
+  - time
+  - GPE
+  - phone-number
+  - department
+  - symptoms
+
+slots:
+  surname:
+    type: text
+    influence_conversation: false
+  name:
+    type: text
+    influence_conversation: false
+  department:
+    type: text
+    influence_conversation: false
+  birthdate:
+    type: any
+    influence_conversation: false
+  city_residence:
+    type: text
+    influence_conversation: false
+  contact_number:
+    type: float
+    influence_conversation: false
+  temperature:
+    type: text
+    influence_conversation: false
+  symptoms:
+    type: list
+    influence_conversation: false
+  initial_date:
+    type: any
+    influence_conversation: false
+    
+responses:
+  utter_greet:
+  - text: "Hey! I'm HuMa, your COVID-19 assistant."
+  - text: "Hi there! Hope all is well."
+  - text: "Hello!"
+
+  utter_mainmenu:
+  - text: "How can I help you today?"
+    
+  utter_thanks_for_reporting:
+  - text: "Thank you for coming to us with this information."
+  - text: "Thanks for the initiative to report this!"
+
+  utter_privacy_notice:
+  - text: "Privacy Notice \n You are notified that by continuing through this process, [name of org] is collecting certain data about you in order to facilitate COVID-19 contact tracing efforts within the organization. \n [name of org] will not disclose your data to third parties but may use your data to comply with its legal obligations with the Department of Health (DOH). \n For additional information, to request access to or a copy of your personal data, or to request certain data be removed or corrected, you may contact [insert name, title, and contact information of designated employee]. \n Do you agree?"
+
+  utter_reason_for_report:
+  - text: "Why are you reporting yourself?"
+
+  utter_understand_end:
+  - text: "I wish we could change your mind. Your report would definitely help us stop the spread of COVID-19."
+
+  utter_restart:
+  - text: "Great! Let's restart."
+  - text: "Awesome. Let's do this."
+
+  utter_ask_surname:
+  - text: "What's your SURNAME?"
+
+  utter_ask_name:
+  - text: "What's your FIRST NAME?"
+
+  utter_ask_department:
+  - text: "What is your department or business group? Write NA if your company doesn't have any."
+
+  utter_ask_birthdate:
+  - text: "What's your date of birth?"
+  
+  utter_ask_city_residence:
+  - text: "What's your CITY of residence?"
+
+  utter_ask_contact_number:
+  - text: "What's your PHONE number? This will be used to reach you for contact tracing."
+
+  utter_ask_temp:
+  - text: "Do you have fever (i.e. temperature is > 38C or 100.4F)?"
+
+  utter_ask_symptoms:
+  - text: "Which among these symptoms are you experiencing? If more than one, separate symptoms with a comma (e.g. loss of taste, sore throat)?"
+    image: https://www.who.int/images/default-source/health-topics/coronavirus/covid19-infographic-symptoms-final.tmb-1920v.png
+
+  utter_ask_initial_date:
+  - text: "When did you start experiencing these symptoms?"
+
+  utter_ask_continue:
+  - text: Do you want to continue?
+
+  utter_submit:
+  - text: Thank you. Your information has been saved.
+
+  utter_goodbye:
+  - text: "Bye then!"
+  - text: "Good bye!"
+  - text: "Talk to you later."
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Human Managed."
+
+actions:
+  - PUI_form
+
+forms:
+  PUI_form:
+    surname:
+    - type: from_entity
+      entity: PERSON
+    name:
+    - type: from_entity
+      entity: PERSON
+    department:
+    - type: from_entity
+      entity: department
+    birthdate:
+    - type: from_entity
+      entity: time
+    city_residence:
+    - type: from_entity
+      entity: GPE
+    contact_number:
+    - type: from_entity
+      entity: phone-number
+    temperature:
+    - type: from_intent
+      intent: affirm
+      value: true
+    - type: from_intent
+      intent: deny
+      value: false
+    symptoms:
+    - type: from_entity
+      entity: symptoms
+    initial_date:
+    - type: from_entity
+      entity: time
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

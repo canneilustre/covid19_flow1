@@ -1,0 +1,188 @@
+version: "2.0"
+
+nlu:
+
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: mainmenu
+  examples: |
+    - MAIN MENU
+    - back to the menu
+    - i want to see other options
+    - menu pls
+    - what else can you do, Huma
+
+- intent: report_suspected_case
+  examples: |
+    - report suspected case
+    - REPORT COVID
+    - i tested positive for covid
+    - i have covid
+    - i want to report myself
+
+- intent: reason_has_symptoms
+  examples: |
+    - exhibiting symptoms
+    - i have covid symptoms
+    - im exhibiting covid-19 symptoms
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+    - sure
+    - uhuh
+    - yup
+    - continue
+    - continue report
+    - okay
+    - i agree
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+    - i disagree
+    - i don't agree
+  
+- intent: unsure
+  examples: |
+    - im not sure
+    - im quite not sure
+    - i dont have a thermometer
+    - i cant check my temp at the moment
+
+- intent: restart_report
+  examples: |
+    - restart report
+    - i want to restart my report
+
+- intent: goodbye
+  examples: |
+    - bye now
+    - goodbye
+    - bye bye
+    - ciao
+    - paalam
+
+## out of scope intents
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot
+    - are you a robot
+    - who are you Huma
+    - who is HuMa
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+  
+- intent: out_of_scope
+  examples: |
+    - this is taking too long
+    - wait stop
+    - you are no help
+    - this is not helping
+    - how old are you
+    - I want a pizza
+    - what's the weather like
+    - none of your business
+    - i don't want to tell you that
+    - nevermind
+    - stop asking
+    - i want to do something else
+    - i changed my mind
+
+## form intents
+
+- intent: inform
+  examples: |
+    - last name is [McManus] (PERSON)
+    - my surname's [Kim] (PERSON)
+    - [Koh] (PERSON)
+    - my name's [Phil] (PERSON)
+    - [Anson] (PERSON)
+    - [Medallo] (PERSON)
+    - [Akhtar] (PERSON)
+    - [Bhat] (PERSON)
+    - [Kim] (PERSON)
+    - my name's [Roshanara] (PERSON)
+    - im [Saleem] (PERSON)
+    - [Basheerudin] (PERSON)
+    - my first name is [Shajahan] (PERSON)
+    - last name is [Ismail] (PERSON)
+    - [McManus] (PERSON)
+    - [Chan] (PERSON)
+    - [Javed] (PERSON)
+    - [Anu] (PERSON)
+    - last name's [Sridharan] (PERSON)
+    - [Finance] (department)
+    - im from [Sales] (deparment)
+    - im part of [humanmanaged.com] (department)
+    - [codemanaged.com] (department)
+    - im with [datamanaged.io] (department)
+    - im from [chainmanaged.io] (department)
+    - [NA] (department)
+    - [n/a] (department)
+    - [N/A] (department)
+    - [Muntinlupa] (city)
+    - [Tung Chung] (city)
+    - i live in [Chennai] (city)
+    - I'm in [Singapore] (city)
+    - im from [Hong Kong] (city)
+    - [Makati] (city)
+    - I'm based in Pasig (city)
+    - i have [sore throat] (symptoms)
+    - im experiencing [shortness of breath] (symptoms)
+    - it's [difficult to breathe] (symptoms)
+    - i feel [pain in my chest] (symptoms)
+    - i have [chest pain] (symptoms)
+    - i have [difficulty breathing] (symptoms)
+    - [loss of speech] (symptoms)
+    - [confusion] (symptoms)
+    - [loss of mobility] (symptoms)
+    - [loss of speech or mobility] (symptoms)
+    - [can't walk] (symptoms)
+    - i have [fever] (symptoms)
+    - im [feverish] (symptoms)
+    - i have [cough] (symptoms)
+    - im [coughing] (symptoms) occassionally
+    - [tiredness] (symptoms)
+    - i feel [tired] all the time (symptoms)
+    - [can't taste and smell] (symptoms)
+    - [loss of taste] (symptoms)
+    - [loss of smell] (symptoms)
+    - i [lost my sense of taste] (symptoms)
+    - i [lost my sense of smell] (symptoms)
+    - i have [sore throat] (symptoms)
+    - i have a terrible [headache] (symptoms)
+    - experiencing [aches and pains] (symptoms)
+    - i have [diarrhea] (symptoms)
+    - i have a [rash] (symptoms)
+    - i have [rashes] (symptoms)
+    - [discolouration of fingers and toes] (symptoms)
+    - i have [red or irritated eyes] (symptoms)
+    - my temp's [39.2] (temperature)

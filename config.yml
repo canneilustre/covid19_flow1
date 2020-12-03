@@ -1,0 +1,33 @@
+# Configuration for Rasa NLU.
+# https://rasa.com/docs/rasa/nlu/components/
+language: en
+
+pipeline:
+- name: WhitespaceTokenizer
+- name: RegexFeaturizer
+- name: LexicalSyntacticFeaturizer
+- name: CountVectorsFeaturizer
+- name: CountVectorsFeaturizer
+  analyzer: "char_wb"
+  min_ngram: 1
+  max_ngram: 4
+- name: DucklingEntityExtractor
+  url: "http://localhost:8000"
+  dimensions: ["time", "phone-number"]
+- name: DIETClassifier
+  epochs: 100
+  split_entities_by_comma:
+    symptoms: True
+- name: EntitySynonymMapper
+- name: "SpacyNLP"
+  model: "en_core_web_md"
+- name: "SpacyEntityExtractor"
+  dimensions: ["PERSON", "GPE"]
+- name: ResponseSelector
+
+policies:
+- name: MemoizationPolicy
+- name: TEDPolicy
+  max_history: 5
+  epochs: 100
+- name: RulePolicy
